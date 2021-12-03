@@ -1,10 +1,11 @@
 import React from 'react';
+import Header from '../components/Header';
 // import PropTypes from 'prop-types';
 
 function Homepage() {
   return (
     <div>
-      This is an Homepage!
+      <Header />
     </div>
   );
 }

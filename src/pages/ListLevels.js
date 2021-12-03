@@ -1,10 +1,11 @@
 import React from 'react';
+import Header from '../components/Header';
 // import PropTypes from 'prop-types';
 
 function ListLevels() {
   return (
     <div>
-      This is a ListLevels!
+      <Header />
     </div>
   );
 }
@@ -14,4 +15,3 @@ function ListLevels() {
 // };
 
 export default ListLevels;
-

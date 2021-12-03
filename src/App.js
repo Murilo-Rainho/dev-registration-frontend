@@ -1,8 +1,10 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Homepage from './pages/Homepage';
-import ListDevs from './pages/ListDevs';
-import ListLevels from './pages/ListLevels';
+import {
+  Homepage,
+  ListDevs,
+  ListLevels,
+} from './pages/';
 
 function App() {
   return (
