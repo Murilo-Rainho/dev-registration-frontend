@@ -1,41 +1,48 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { WHICH_BUTTON_IS_ACTIVE } from '../redux/actions';
 
 function SearchBarButtonsToAppearsForms({
   devOrLevel,
-  renderRegisterEditOrRemoveForm,
-  setRenderRegisterEditOrRemoveForm,
 }) {
+  const dispatch = useDispatch();
+  const {
+    whichButtonIsActive,
+  } = useSelector(state => state[`${devOrLevel}Reducer`]);
+
   return (
     <section>
-      { (renderRegisterEditOrRemoveForm !== 'show') && (
+      {console.log('oioioi')}
+      { (whichButtonIsActive !== 'show') && (
         <button
           type="button"
-          onClick={ () => setRenderRegisterEditOrRemoveForm('show') }
+          onClick={ () => dispatch({ type: WHICH_BUTTON_IS_ACTIVE, payload: 'show' }) }
         >
           Show {devOrLevel}s
         </button>
       ) }
-      { (renderRegisterEditOrRemoveForm !== 'register') && (
+      { (whichButtonIsActive !== 'register') && (
         <button
           type="button"
-          onClick={ () => setRenderRegisterEditOrRemoveForm('register') }
+          onClick={ () => dispatch({ type: WHICH_BUTTON_IS_ACTIVE, payload: 'register' }) }
         >
           Register {devOrLevel}
         </button>
       ) }
-      { (renderRegisterEditOrRemoveForm !== 'edit') && (
+      { (whichButtonIsActive !== 'edit') && (
         <button
           type="button"
-          onClick={ () => setRenderRegisterEditOrRemoveForm('edit') }
+          onClick={ () => dispatch({ type: WHICH_BUTTON_IS_ACTIVE, payload: 'edit' }) }
         >
           Edit {devOrLevel}
         </button>
       ) }
-      { (renderRegisterEditOrRemoveForm !== 'remove') && (
+      { (whichButtonIsActive !== 'remove') && (
         <button
           type="button"
-          onClick={ () => setRenderRegisterEditOrRemoveForm('remove') }
+          onClick={ () => dispatch({ type: WHICH_BUTTON_IS_ACTIVE, payload: 'remove' }) }
         >
           Remove {devOrLevel}
         </button>
@@ -46,8 +53,6 @@ function SearchBarButtonsToAppearsForms({
 
 SearchBarButtonsToAppearsForms.propTypes = {
   devOrLevel: PropTypes.string.isRequired,
-  renderRegisterEditOrRemoveForm: PropTypes.string.isRequired,
-  setRenderRegisterEditOrRemoveForm: PropTypes.func.isRequired,
 };
 
 export default SearchBarButtonsToAppearsForms;

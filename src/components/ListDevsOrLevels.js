@@ -4,6 +4,7 @@ import { DevCard, LevelCard } from '.';
 
 function ListDevsOrLevels({ devOrLevel }) {
   const [devOrLevelList, setDevOrLevelList] = useState([]);
+
   useEffect(() => {
     const fetchRequest = async () => {
       const URL = `http://localhost:8080/${devOrLevel}`;
@@ -13,6 +14,7 @@ function ListDevsOrLevels({ devOrLevel }) {
     }
     fetchRequest();
   }, [devOrLevel]);
+
   return (
     <ul>
       { (devOrLevelList.length !== 0) && (

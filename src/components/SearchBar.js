@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import SearchBarFilters from './SearchBarFilters';
 import PropTypes from 'prop-types';
 import SearchBarButtonsToAppearsForms from './SearchBarButtonsToAppearsForms';
+import { useSelector } from 'react-redux';
 
 function SearchBar({ devOrLevel }) {
-  const [renderRegisterEditOrRemoveForm,
-    setRenderRegisterEditOrRemoveForm] = useState('show');
+  const {
+    whichButtonIsActive,
+  } = useSelector(state => state[`${devOrLevel}Reducer`]);
 
   return (
     <div>
-      { (renderRegisterEditOrRemoveForm === 'show') && (
+      { (whichButtonIsActive === 'show') && (
         <SearchBarFilters devOrLevel={ devOrLevel } />
       ) }
       <SearchBarButtonsToAppearsForms
-        renderRegisterEditOrRemoveForm={ renderRegisterEditOrRemoveForm }
-        setRenderRegisterEditOrRemoveForm={ setRenderRegisterEditOrRemoveForm }
         devOrLevel={ devOrLevel }
       />
     </div>
