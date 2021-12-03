@@ -1,19 +1,28 @@
-import React from 'react';
-// import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import SearchBarFilters from './SearchBarFilters';
+import PropTypes from 'prop-types';
+import SearchBarButtonsToAppearsForms from './SearchBarButtonsToAppearsForms';
 
-function SearchBar() {
+function SearchBar({ devOrLevel }) {
+  const [renderRegisterEditOrRemoveForm,
+    setRenderRegisterEditOrRemoveForm] = useState('show');
+
   return (
     <div>
-      <label>
-        Search Devs:
-        <input type="text" maxLength="100" />
-      </label>
+      { (renderRegisterEditOrRemoveForm === 'show') && (
+        <SearchBarFilters devOrLevel={ devOrLevel } />
+      ) }
+      <SearchBarButtonsToAppearsForms
+        renderRegisterEditOrRemoveForm={ renderRegisterEditOrRemoveForm }
+        setRenderRegisterEditOrRemoveForm={ setRenderRegisterEditOrRemoveForm }
+        devOrLevel={ devOrLevel }
+      />
     </div>
   );
 }
 
-// SearchBar.propTypes = {
-
-// };
+SearchBar.propTypes = {
+  devOrLevel: PropTypes.string.isRequired,
+};
 
 export default SearchBar;

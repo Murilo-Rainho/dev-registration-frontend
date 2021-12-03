@@ -1,11 +1,17 @@
 import React from 'react';
-import Header from '../components/Header';
+import {
+  SearchBar,
+  Header,
+  ListDevsOrLevels,
+} from '../components';
 // import PropTypes from 'prop-types';
 
 function ListDevs() {
   return (
     <div>
       <Header />
+      <SearchBar devOrLevel="Dev" />
+      <ListDevsOrLevels devOrLevel="dev" />
     </div>
   );
 }
