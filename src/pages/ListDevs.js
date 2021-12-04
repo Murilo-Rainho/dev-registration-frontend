@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 import {
   SearchBar,
   Header,
@@ -16,9 +17,21 @@ function ListDevs() {
     <div>
       <Header />
       <SearchBar devOrLevel="dev" />
-      { (whichButtonIsActive === 'show') && (
+      { (whichButtonIsActive === 'show' || whichButtonIsActive === 'remove') && (
         <ListDevsOrLevels devOrLevel="dev" />
       ) }
+      <ToastContainer
+        limit={1}
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }
@@ -28,4 +41,3 @@ function ListDevs() {
 // };
 
 export default ListDevs;
-

@@ -14,7 +14,6 @@ function SearchBarButtonsToAppearsForms({
 
   return (
     <section>
-      {console.log('oioioi')}
       { (whichButtonIsActive !== 'show') && (
         <button
           type="button"

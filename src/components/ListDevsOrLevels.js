@@ -1,31 +1,47 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { DevCard, LevelCard } from '.';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { FETCH_REQUEST_DEVS, FETCH_REQUEST_LEVELS } from '../redux/actions';
 
 function ListDevsOrLevels({ devOrLevel }) {
-  const [devOrLevelList, setDevOrLevelList] = useState([]);
+  const capitalize = (string) => {
+    return `${string.charAt(0).toUpperCase()}${string.slice(1)}`;
+  };
+
+  const allDevsOrLevels = useSelector((state) => state[`${devOrLevel}Reducer`][`all${capitalize(devOrLevel)}s`])
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchRequest = async () => {
       const URL = `http://localhost:8080/${devOrLevel}`;
       const fetchPromise = await fetch(URL);
       const fetchJson = await fetchPromise.json();
-      setDevOrLevelList(() => fetchJson);
+      const ACTION_TYPE = (devOrLevel === 'dev') ?
+        FETCH_REQUEST_DEVS : FETCH_REQUEST_LEVELS;
+      dispatch({ type: ACTION_TYPE, payload: fetchJson });
     }
     fetchRequest();
-  }, [devOrLevel]);
+  }, [devOrLevel, dispatch]);
+
+  const renderErrorMessageOrList = () => {
+    if (allDevsOrLevels.message || !allDevsOrLevels.results) {
+      return (<h1>{allDevsOrLevels.message || 'Some error occurs'}</h1>);
+    } else {
+      return (devOrLevel === 'dev') ?
+      allDevsOrLevels.results.map((devInfo) => (
+        <DevCard key={ `${devInfo.id}-${devInfo.level}` } devInfo={ devInfo } />
+      )) :
+      allDevsOrLevels.results.map((levelInfo, index) => (
+        <LevelCard key={ `${index}-${levelInfo.id}` } levelInfo={ levelInfo } />
+      ));
+    }
+  }
 
   return (
     <ul>
-      { (devOrLevelList.length !== 0) && (
-        (devOrLevel === 'dev') ?
-          devOrLevelList.results.map((devInfo) => (
-            <DevCard key={ `${devInfo.id}-${devInfo.level}` } devInfo={ devInfo } />
-          )) :
-          devOrLevelList.results.map((levelInfo, index) => (
-            <LevelCard key={ `${index}-${levelInfo.id}` } levelInfo={ levelInfo } />
-          ))
-      ) }
+      { renderErrorMessageOrList() }
     </ul>
   );
 }

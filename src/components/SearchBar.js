@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SearchBarFilters from './SearchBarFilters';
 import PropTypes from 'prop-types';
 import SearchBarButtonsToAppearsForms from './SearchBarButtonsToAppearsForms';
@@ -11,7 +11,7 @@ function SearchBar({ devOrLevel }) {
 
   return (
     <div>
-      { (whichButtonIsActive === 'show') && (
+      { (whichButtonIsActive === 'show' || whichButtonIsActive === 'remove') && (
         <SearchBarFilters devOrLevel={ devOrLevel } />
       ) }
       <SearchBarButtonsToAppearsForms
