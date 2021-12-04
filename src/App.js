@@ -4,7 +4,7 @@ import {
   Homepage,
   ListDevs,
   ListLevels,
-} from './pages/';
+} from './pages';
 
 function App() {
   return (

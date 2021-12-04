@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import 'react-toastify/dist/ReactToastify.css';
 
-import { FETCH_REQUEST_LEVELS } from '../redux/actions';
-import { notify } from '../helpers';
+import { FETCH_REQUEST_LEVELS } from '../../redux/actions';
+import { notify } from '../../helpers';
 
 function LevelCard({ levelInfo: { id, level, devTotal } }) {
   const {

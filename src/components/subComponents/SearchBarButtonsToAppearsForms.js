@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { WHICH_BUTTON_IS_ACTIVE } from '../redux/actions';
+import { WHICH_BUTTON_IS_ACTIVE } from '../../redux/actions';
 
 function SearchBarButtonsToAppearsForms({
   devOrLevel,

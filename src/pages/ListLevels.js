@@ -5,8 +5,8 @@ import {
   ListDevsOrLevels,
   SearchBar,
   Header,
+  RegisterLevelForm,
 } from '../components';
-import RegisterLevelForm from '../components/RegisterLevelForm';
 // import PropTypes from 'prop-types';
 
 function ListLevels() {

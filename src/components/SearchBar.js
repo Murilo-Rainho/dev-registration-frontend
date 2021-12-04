@@ -1,7 +1,9 @@
 import React from 'react';
-import SearchBarFilters from './SearchBarFilters';
 import PropTypes from 'prop-types';
-import SearchBarButtonsToAppearsForms from './SearchBarButtonsToAppearsForms';
+import {
+  SearchBarButtonsToAppearsForms,
+  SearchBarFilters,
+} from '.';
 import { useSelector } from 'react-redux';
 
 function SearchBar({ devOrLevel }) {

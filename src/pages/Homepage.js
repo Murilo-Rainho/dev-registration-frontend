@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from '../components/Header';
+import { Header } from '../components';
 // import PropTypes from 'prop-types';
 
 function Homepage() {
   return (
     <div>
-      <Header />
+      <Header title="homepage" />
     </div>
   );
 }
