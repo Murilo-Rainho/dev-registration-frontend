@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-function Header() {
+import { capitalize } from '../helpers';
+
+function Header({ title }) {
   return (
     <div>
-      <h1>Page's Title</h1>
+      <h1>{ capitalize(title) }</h1>
       <ul>
         <li><Link to="/">Homepage</Link></li>
         <li><Link to="/dev">About Devs</Link></li>
@@ -15,9 +17,9 @@ function Header() {
   );
 }
 
-// Header.propTypes = {
-
-// };
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 export default Header;
 

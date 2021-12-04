@@ -4,12 +4,9 @@ import { DevCard, LevelCard } from '.';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { FETCH_REQUEST_DEVS, FETCH_REQUEST_LEVELS } from '../redux/actions';
+import { capitalize } from '../helpers';
 
 function ListDevsOrLevels({ devOrLevel }) {
-  const capitalize = (string) => {
-    return `${string.charAt(0).toUpperCase()}${string.slice(1)}`;
-  };
-
   const allDevsOrLevels = useSelector((state) => state[`${devOrLevel}Reducer`][`all${capitalize(devOrLevel)}s`])
   const dispatch = useDispatch();
 

@@ -6,6 +6,7 @@ import {
   SearchBar,
   Header,
 } from '../components';
+import RegisterLevelForm from '../components/RegisterLevelForm';
 // import PropTypes from 'prop-types';
 
 function ListLevels() {
@@ -15,10 +16,13 @@ function ListLevels() {
 
   return (
     <div>
-      <Header />
+      <Header title={ `${whichButtonIsActive} Levels` } />
       <SearchBar devOrLevel="level" />
       { (whichButtonIsActive === 'show' || whichButtonIsActive === 'remove') && (
         <ListDevsOrLevels devOrLevel="level" />
+      ) }
+      { (whichButtonIsActive === 'register') && (
+        <RegisterLevelForm />
       ) }
       <ToastContainer
         limit={1}

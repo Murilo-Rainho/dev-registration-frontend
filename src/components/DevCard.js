@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { FETCH_REQUEST_DEVS } from '../redux/actions';
+import { notify } from '../helpers';
 
 function DevCard({ devInfo: {
   id,
@@ -19,9 +19,6 @@ function DevCard({ devInfo: {
   const {
     whichButtonIsActive,
   } = useSelector(state => state.devReducer);
-  const notify = (type, message = '') => toast[type](message, {
-    theme: "dark",
-  });
   const dispatch = useDispatch();
 
   const deleteDev = async (devId) => {
