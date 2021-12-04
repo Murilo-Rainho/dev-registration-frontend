@@ -9,3 +9,7 @@ export const notify = (type = 'info', message = '') => toast[type](message, {
 });
 
 export const URL = 'http://localhost:8080';
+
+export const ageCalculator = (birthday, now) => {
+  return Math.floor(Math.ceil(Math.abs(birthday.getTime() - now.getTime()) / (1000 * 3600 * 24)) / 365.25);
+}

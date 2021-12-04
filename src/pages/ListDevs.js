@@ -5,6 +5,7 @@ import {
   SearchBar,
   Header,
   ListDevsOrLevels,
+  RegisterDevForm,
 } from '../components';
 // import PropTypes from 'prop-types';
 
@@ -19,6 +20,9 @@ function ListDevs() {
       <SearchBar devOrLevel="dev" />
       { (whichButtonIsActive === 'show' || whichButtonIsActive === 'remove') && (
         <ListDevsOrLevels devOrLevel="dev" />
+      ) }
+      { (whichButtonIsActive === 'register') && (
+        <RegisterDevForm />
       ) }
       <ToastContainer
         limit={1}

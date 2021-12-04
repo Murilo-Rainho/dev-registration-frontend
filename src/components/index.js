@@ -6,3 +6,4 @@ export { default as ListDevsOrLevels } from './ListDevsOrLevels';
 export { default as LevelCard } from './subComponents/LevelCard';
 export { default as DevCard } from './subComponents/DevCard';
 export { default as RegisterLevelForm } from './RegisterLevelForm';
+export { default as RegisterDevForm } from './RegisterDevForm';

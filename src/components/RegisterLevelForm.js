@@ -9,12 +9,11 @@ function RegisterLevelForm() {
   const submitForm = async (event) => {
     event.preventDefault();
     try {
-      const fetchPromise = await fetch(`${URL}/level`, {
+      await fetch(`${URL}/level`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ levelName }),
       });
-      console.log(fetchPromise);
       notify('success', 'Level has been registered!');
     } catch (error) {
       console.log(error);
