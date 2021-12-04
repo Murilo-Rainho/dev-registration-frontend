@@ -5,5 +5,6 @@ export { default as SearchBarButtonsToAppearsForms } from './subComponents/Searc
 export { default as ListDevsOrLevels } from './ListDevsOrLevels';
 export { default as LevelCard } from './subComponents/LevelCard';
 export { default as DevCard } from './subComponents/DevCard';
+export { default as GenderInputs } from './subComponents/GenderInputs';
 export { default as RegisterLevelForm } from './RegisterLevelForm';
 export { default as RegisterDevForm } from './RegisterDevForm';
