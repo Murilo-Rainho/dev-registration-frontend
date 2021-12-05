@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -8,9 +8,6 @@ import { FETCH_REQUEST_LEVELS } from '../../redux/actions';
 import { notify } from '../../helpers';
 
 function LevelCard({ levelInfo: { id, level, devTotal } }) {
-  const {
-    whichButtonIsActive,
-  } = useSelector(state => state.levelReducer);
   const dispatch = useDispatch();
 
   const deleteLevel = async (levelId) => {
@@ -40,13 +37,9 @@ function LevelCard({ levelInfo: { id, level, devTotal } }) {
       <h3>Level Id: { id }</h3>
       <h3>Name: { level }</h3>
       <h3>Total of Devs With This Level: { devTotal }</h3>
-      { (whichButtonIsActive === 'remove') && (
-        <>
-          <button type="button" onClick={ () => deleteLevel(id) }>
-            Delete Level
-          </button>
-        </>
-      ) }
+      <button type="button" onClick={ () => deleteLevel(id) }>
+        Delete Level
+      </button>
     </li>
   );
 }

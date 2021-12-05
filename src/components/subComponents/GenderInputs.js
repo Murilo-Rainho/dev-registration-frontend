@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function GenderInputs({ setGender }) {
+function GenderInputs({ setGender, devGender }) {
   return (
     <>
       <h3>Gender:</h3>
         <label>
           Female
           <input
+            defaultChecked={ (devGender === 'F') }
             required
             type="radio"
             name="gender"
@@ -18,6 +19,7 @@ function GenderInputs({ setGender }) {
         <label>
           Male
           <input
+            defaultChecked={ (devGender === 'M') }
             required
             type="radio"
             name="gender"
@@ -28,6 +30,7 @@ function GenderInputs({ setGender }) {
         <label>
           Lesbian
           <input
+            defaultChecked={ (devGender === 'L') }
             required
             type="radio"
             name="gender"
@@ -38,6 +41,7 @@ function GenderInputs({ setGender }) {
         <label>
           Gay
           <input
+            defaultChecked={ (devGender === 'G') }
             required
             type="radio"
             name="gender"
@@ -48,6 +52,7 @@ function GenderInputs({ setGender }) {
         <label>
           Bisexual
           <input
+            defaultChecked={ (devGender === 'B') }
             required
             type="radio"
             name="gender"
@@ -58,6 +63,7 @@ function GenderInputs({ setGender }) {
         <label>
           Trans
           <input
+            defaultChecked={ (devGender === 'T') }
             required
             type="radio"
             name="gender"
@@ -68,6 +74,7 @@ function GenderInputs({ setGender }) {
         <label>
           Questioning
           <input
+            defaultChecked={ (devGender === 'Q') }
             required
             type="radio"
             name="gender"
@@ -78,6 +85,7 @@ function GenderInputs({ setGender }) {
         <label>
           + (Other)
           <input
+            defaultChecked={ (devGender === '+') }
             required
             type="radio"
             name="gender"
@@ -91,6 +99,7 @@ function GenderInputs({ setGender }) {
 
 GenderInputs.propTypes = {
   setGender: PropTypes.func.isRequired,
+  devGender: PropTypes.string,
 };
 
 export default GenderInputs;

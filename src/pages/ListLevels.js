@@ -18,7 +18,7 @@ function ListLevels() {
     <div>
       <Header title={ `${whichButtonIsActive} Levels` } />
       <SearchBar devOrLevel="level" />
-      { (whichButtonIsActive === 'show' || whichButtonIsActive === 'remove') && (
+      { (whichButtonIsActive === 'show') && (
         <ListDevsOrLevels devOrLevel="level" />
       ) }
       { (whichButtonIsActive === 'register') && (

@@ -2,19 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { WHICH_BUTTON_IS_ACTIVE } from '../../redux/actions';
+import { EDITOR_DEV_ENABLE, WHICH_BUTTON_IS_ACTIVE } from '../../redux/actions';
+import { capitalize } from '../../helpers';
 
 function SearchBarButtonsToAppearsForms({
   devOrLevel,
 }) {
   const dispatch = useDispatch();
-  const {
-    whichButtonIsActive,
-  } = useSelector(state => state[`${devOrLevel}Reducer`]);
+  const selector = useSelector(state => state[`${devOrLevel}Reducer`]);
+  const { whichButtonIsActive } = selector;
 
   return (
     <section>
-      { (whichButtonIsActive !== 'show') && (
+      { (whichButtonIsActive !== 'show' && !selector[`edit${capitalize(devOrLevel)}Enable`]) && (
         <button
           type="button"
           onClick={ () => dispatch({ type: WHICH_BUTTON_IS_ACTIVE, payload: 'show' }) }
@@ -30,20 +30,12 @@ function SearchBarButtonsToAppearsForms({
           Register {devOrLevel}
         </button>
       ) }
-      { (whichButtonIsActive !== 'edit') && (
-        <button
-          type="button"
-          onClick={ () => dispatch({ type: WHICH_BUTTON_IS_ACTIVE, payload: 'edit' }) }
-        >
-          Edit {devOrLevel}
-        </button>
-      ) }
-      { (whichButtonIsActive !== 'remove') && (
-        <button
-          type="button"
-          onClick={ () => dispatch({ type: WHICH_BUTTON_IS_ACTIVE, payload: 'remove' }) }
-        >
-          Remove {devOrLevel}
+      { (selector[`edit${capitalize(devOrLevel)}Enable`]) && (
+        <button type="button" onClick={ () => {
+          dispatch({ type: EDITOR_DEV_ENABLE, payload: {} });
+          dispatch({ type: WHICH_BUTTON_IS_ACTIVE, payload: 'show' });
+        } }>
+          Cancel edition
         </button>
       ) }
     </section>
