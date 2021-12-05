@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import 'react-toastify/dist/ReactToastify.css';
 
-import { FETCH_REQUEST_LEVELS } from '../../redux/actions';
+import { EDITOR_LEVEL_ENABLE, FETCH_REQUEST_LEVELS, WHICH_BUTTON_IS_ACTIVE } from '../../redux/actions';
 import { notify } from '../../helpers';
 
 function LevelCard({ levelInfo: { id, level, devTotal } }) {
@@ -39,6 +39,13 @@ function LevelCard({ levelInfo: { id, level, devTotal } }) {
       <h3>Total of Devs With This Level: { devTotal }</h3>
       <button type="button" onClick={ () => deleteLevel(id) }>
         Delete Level
+      </button>
+      <button type="button" onClick={ () => {
+        const payload = { id, level };
+        dispatch({ type: EDITOR_LEVEL_ENABLE, payload });
+        dispatch({ type: WHICH_BUTTON_IS_ACTIVE, payload: 'register' });
+      } }>
+        Edit Dev
       </button>
     </li>
   );

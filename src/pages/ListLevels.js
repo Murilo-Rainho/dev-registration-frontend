@@ -5,7 +5,7 @@ import {
   ListDevsOrLevels,
   SearchBar,
   Header,
-  RegisterLevelForm,
+  RegisterOrEditLevelForm,
 } from '../components';
 // import PropTypes from 'prop-types';
 
@@ -22,7 +22,7 @@ function ListLevels() {
         <ListDevsOrLevels devOrLevel="level" />
       ) }
       { (whichButtonIsActive === 'register') && (
-        <RegisterLevelForm />
+        <RegisterOrEditLevelForm />
       ) }
       <ToastContainer
         limit={1}

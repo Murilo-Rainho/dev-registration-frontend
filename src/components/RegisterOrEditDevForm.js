@@ -9,7 +9,7 @@ import { GenderInputs } from '.';
 import { notify, URL, ageCalculator } from '../helpers';
 import { EDITOR_DEV_ENABLE, WHICH_BUTTON_IS_ACTIVE } from '../redux/actions';
 
-function RegisterDevForm() {
+function RegisterOrEditDevForm() {
   const { editDevEnable, devEditInfo } = useSelector((state) => state.devReducer);
   const dispatch = useDispatch();
 
@@ -95,8 +95,8 @@ function RegisterDevForm() {
   );
 }
 
-// RegisterDevForm.propTypes = {
+// RegisterOrEditDevForm.propTypes = {
 
 // };
 
-export default RegisterDevForm;
+export default RegisterOrEditDevForm;
