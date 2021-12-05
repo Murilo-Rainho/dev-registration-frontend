@@ -37,7 +37,8 @@ function RegisterDevForm() {
         body: JSON.stringify(fetchBody),
       });
       notify('success', `Dev has been ${(editDevEnable) ? 'edited' : 'registered'}!`);
-      dispatch({ type: WHICH_BUTTON_IS_ACTIVE, payload: 'show' })
+      dispatch({ type: WHICH_BUTTON_IS_ACTIVE, payload: 'show' });
+      dispatch({ type: EDITOR_DEV_ENABLE, payload: {} });
     } catch (error) {
       console.log(error);
       notify('error', error.message || 'Unexpected error');
@@ -87,10 +88,7 @@ function RegisterDevForm() {
           required
         />
       </label>
-      <button
-        type="submit"
-        onClick={ () => (editDevEnable) && dispatch({ type: EDITOR_DEV_ENABLE, payload: {} }) }
-      >
+      <button type="submit" >
         { (editDevEnable) ? 'Edit Dev' : 'Register Dev' }
       </button>
     </form>
