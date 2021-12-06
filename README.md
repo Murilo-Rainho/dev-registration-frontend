@@ -31,6 +31,8 @@
 > organize and plan how the application would be as a whole. I did an excalidraw so I could get a better feel
 > during development, as well as knowing which pages and components would need to be created, and which ones
 > could be reused.
+> 
+> ![image of the schema of the frontend](./excalidraw-frontend.png)
 >
 > After the other 2 days working on the backend, I decided to stay only 2 days on the front, as the last one
 > would be used for deploying (something I had never done before and I was able to learn and do it for the
