@@ -9,7 +9,7 @@ function Header({ title }) {
     <div>
       <h1>{ capitalize(title) }</h1>
       <ul>
-        <li><Link to="/">Homepage</Link></li>
+        <li><Link to="/">Homepage </Link></li>
         <li><Link to="/dev">About Devs</Link></li>
         <li><Link to="/level">About Levels</Link></li>
       </ul>
