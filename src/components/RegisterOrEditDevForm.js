@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { GenderInputs } from '.';
 
-import { notify, URL, ageCalculator } from '../helpers';
+import { notify, ageCalculator } from '../helpers';
 import { EDITOR_DEV_ENABLE, WHICH_BUTTON_IS_ACTIVE } from '../redux/actions';
 
 function RegisterOrEditDevForm() {
@@ -30,7 +30,7 @@ function RegisterOrEditDevForm() {
         hobby,
         level,
       };
-      const fetchUrl = (editDevEnable) ? `${URL}/dev/${devEditInfo.id}` : `${URL}/dev`;
+      const fetchUrl = (editDevEnable) ? `${process.env.REACT_APP_BACKEND_URL}dev/${devEditInfo.id}` : `${process.env.REACT_APP_BACKEND_URL}/dev`;
       await fetch(fetchUrl, {
         method: (editDevEnable) ? 'PUT' : 'POST',
         headers: { 'Content-Type': 'application/json' },

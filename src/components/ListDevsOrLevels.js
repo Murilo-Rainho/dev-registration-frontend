@@ -4,7 +4,11 @@ import { DevCard, LevelCard } from '.';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { FETCH_REQUEST_DEVS, FETCH_REQUEST_LEVELS } from '../redux/actions';
-import { capitalize, URL } from '../helpers';
+import { capitalize } from '../helpers';
+
+import { config as dotenvConfig } from 'dotenv';
+
+dotenvConfig();
 
 function ListDevsOrLevels({ devOrLevel }) {
   const allDevsOrLevels = useSelector((state) => state[`${devOrLevel}Reducer`][`all${capitalize(devOrLevel)}s`])
@@ -12,7 +16,8 @@ function ListDevsOrLevels({ devOrLevel }) {
 
   useEffect(() => {
     const fetchRequest = async () => {
-      const FETCH_URL = `${URL}/${devOrLevel}`;
+      const FETCH_URL = `${process.env.REACT_APP_BACKEND_URL}${devOrLevel}`;
+      console.log(FETCH_URL);
       const fetchPromise = await fetch(FETCH_URL);
       const fetchJson = await fetchPromise.json();
       const ACTION_TYPE = (devOrLevel === 'dev') ?

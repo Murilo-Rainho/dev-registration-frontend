@@ -20,7 +20,7 @@ function DevCard({ devInfo: {
 
   const deleteDev = async (devId) => {
     try {
-      const URL = `http://localhost:8080/dev/${devId}`;
+      const URL = `${process.env.REACT_APP_BACKEND_URL}${devId}`;
       const { ok } = await fetch(URL, { method: 'DELETE' });
       if (ok) {
         notify('success', 'Dev has been deleted');

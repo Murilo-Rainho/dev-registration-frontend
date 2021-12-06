@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import PropTypes from 'prop-types';
 
-import { notify, URL } from '../helpers';
+import { notify } from '../helpers';
 import { EDITOR_LEVEL_ENABLE, WHICH_BUTTON_IS_ACTIVE } from '../redux/actions';
 
 function RegisterOrEditLevelForm() {
@@ -13,7 +13,7 @@ function RegisterOrEditLevelForm() {
   const submitForm = async (event) => {
     event.preventDefault();
     try {
-      const fetchUrl = (editLevelEnable) ? `${URL}/level/${levelEditInfo.id}` : `${URL}/level`;
+      const fetchUrl = (editLevelEnable) ? `${process.env.REACT_APP_BACKEND_URL}/level/${levelEditInfo.id}` : `${process.env.REACT_APP_BACKEND_URL}/level`;
       await fetch(fetchUrl, {
         method: (editLevelEnable) ? 'PUT' : 'POST',
         headers: { 'Content-Type': 'application/json' },

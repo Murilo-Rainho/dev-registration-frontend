@@ -12,7 +12,7 @@ function LevelCard({ levelInfo: { id, level, devTotal } }) {
 
   const deleteLevel = async (levelId) => {
     try {
-      const URL = `http://localhost:8080/level/${levelId}`;
+      const URL = `${process.env.REACT_APP_BACKEND_URL}${levelId}`;
       const erro = await fetch(URL, { method: 'DELETE' });
       if (erro.ok) {
         notify('success', 'Level has been deleted');
