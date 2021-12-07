@@ -13,7 +13,7 @@ function RegisterOrEditLevelForm() {
   const submitForm = async (event) => {
     event.preventDefault();
     try {
-      const fetchUrl = (editLevelEnable) ? `${process.env.REACT_APP_BACKEND_URL}/level/${levelEditInfo.id}` : `${process.env.REACT_APP_BACKEND_URL}/level`;
+      const fetchUrl = (editLevelEnable) ? `${process.env.REACT_APP_BACKEND_URL}level/${levelEditInfo.id}` : `${process.env.REACT_APP_BACKEND_URL}level`;
       await fetch(fetchUrl, {
         method: (editLevelEnable) ? 'PUT' : 'POST',
         headers: { 'Content-Type': 'application/json' },

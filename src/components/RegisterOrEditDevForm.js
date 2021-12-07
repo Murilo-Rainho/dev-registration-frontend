@@ -30,7 +30,7 @@ function RegisterOrEditDevForm() {
         hobby,
         level,
       };
-      const fetchUrl = (editDevEnable) ? `${process.env.REACT_APP_BACKEND_URL}dev/${devEditInfo.id}` : `${process.env.REACT_APP_BACKEND_URL}/dev`;
+      const fetchUrl = (editDevEnable) ? `${process.env.REACT_APP_BACKEND_URL}dev/${devEditInfo.id}` : `${process.env.REACT_APP_BACKEND_URL}dev`;
       await fetch(fetchUrl, {
         method: (editDevEnable) ? 'PUT' : 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -38,7 +38,9 @@ function RegisterOrEditDevForm() {
       });
       notify('success', `Dev has been ${(editDevEnable) ? 'edited' : 'registered'}!`);
       dispatch({ type: WHICH_BUTTON_IS_ACTIVE, payload: 'show' });
-      dispatch({ type: EDITOR_DEV_ENABLE, payload: {} });
+      if (editDevEnable) {
+        dispatch({ type: EDITOR_DEV_ENABLE, payload: {} });
+      }
     } catch (error) {
       console.log(error);
       notify('error', error.message || 'Unexpected error');
